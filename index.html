@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102b50">
+<meta name="description" content="AI Learning Academy — Learn smarter, every day.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>AI Learning Academy</title>
+<style>
+:root{--navy:#102b50;--blue:#1c426d;--gold:#f5c94a;--paper:#f4f7fb;--ink:#14243a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;color:var(--ink)}
+header{background:linear-gradient(140deg,var(--navy),#1d4775);color:white;padding:22px 18px 26px;border-radius:0 0 26px 26px}
+.top{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;background:#fff2c4;border-radius:15px;display:grid;place-items:center;font-size:27px}
+h1{font-size:19px;margin:0}header p{margin:4px 0 0;color:#d7e4f3;font-size:13px}
+.welcome{margin-top:25px}.welcome h2{font-size:24px;margin:0 0 5px}.welcome p{margin:0;color:#d7e4f3;font-size:14px}
+main{padding:18px;max-width:760px;margin:auto}.section-title{font-size:17px;font-weight:750;margin:8px 0 13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{border:0;background:white;border-radius:17px;padding:17px 14px;text-align:left;box-shadow:0 4px 14px #1836530d;min-height:112px;color:var(--ink);cursor:pointer}
+.tile:active{transform:scale(.98)}.tile .ico{font-size:25px;display:block;margin-bottom:9px}.tile strong{display:block;font-size:14px}.tile small{color:#718096;font-size:11px}
+.panel{background:white;border-radius:18px;padding:17px;margin-top:17px;box-shadow:0 4px 14px #1836530d}
+.panel h3{margin:0 0 8px;font-size:16px}.panel p{margin:0;color:#64748b;font-size:13px;line-height:1.55}
+.actions{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
+button.primary,button.secondary{border:0;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer}
+.primary{background:var(--navy);color:white}.secondary{background:#fff2c4;color:#604900}
+footer{text-align:center;color:#8290a2;font-size:11px;padding:25px 12px}
+#modal{display:none;position:fixed;inset:0;background:#07162999;align-items:end;justify-content:center;padding:12px}
+.dialog{background:white;border-radius:22px 22px 18px 18px;padding:21px;width:min(100%,560px);max-height:85vh;overflow:auto}
+.dialog h2{margin:0 0 8px;font-size:20px}.dialog p{color:#64748b;font-size:14px;line-height:1.6}
+input,textarea,select{width:100%;padding:12px;border:1px solid #d8e0ea;border-radius:11px;font:inherit;margin:8px 0}
+@media(min-width:600px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}header{padding-left:max(22px,calc((100% - 720px)/2));padding-right:max(22px,calc((100% - 720px)/2))}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="logo">🎓</div><div><h1>AI Learning Academy</h1><p>Learn smarter • শেখো আরও ভালোভাবে</p></div></div>
+ <div class="welcome"><h2 id="greeting">স্বাগতম! 👋</h2><p>আজকের শেখা শুরু হোক এখান থেকেই।</p></div>
+</header>
+<main>
+ <div class="section-title">তোমার Learning Hub</div>
+ <div class="grid">
+  <button class="tile" onclick="openFeature('Student Dashboard','তোমার পড়াশোনার অগ্রগতি, আজকের কাজ এবং শেখার লক্ষ্য এখানে দেখা যাবে।')"><span class="ico">📊</span><strong>Student Dashboard</strong><small>শেখার অগ্রগতি</small></button>
+  <button class="tile" onclick="openFeature('Exam Hall','এখানে বিষয়ভিত্তিক মডেল টেস্ট ও অনুশীলনী পরীক্ষা থাকবে।')"><span class="ico">📝</span><strong>Exam Hall</strong><small>পরীক্ষার অনুশীলন</small></button>
+  <button class="tile" onclick="openFeature('Result Center','পরীক্ষার নম্বর, সঠিক উত্তর এবং উন্নতির জায়গা এখানে দেখানো হবে।')"><span class="ico">🏆</span><strong>Result Center</strong><small>ফলাফল দেখো</small></button>
+  <button class="tile" onclick="openFeature('Achievement System','পড়াশোনার লক্ষ্য পূরণ করলে ব্যাজ ও অর্জন আনলক হবে।')"><span class="ico">🌟</span><strong>Achievement</strong><small>তোমার অর্জন</small></button>
+  <button class="tile" onclick="openTeacher()"><span class="ico">🤖</span><strong>Personal AI Teacher</strong><small>প্রশ্ন করো, শেখো</small></button>
+  <button class="tile" onclick="openFeature('Weakness Detector','কোন অধ্যায়ে আরও অনুশীলন দরকার, তা পরীক্ষার ফল থেকে শনাক্ত করা হবে।')"><span class="ico">🧠</span><strong>Weakness Detector</strong><small>দুর্বল বিষয় খুঁজে বের করো</small></button>
+  <button class="tile" onclick="openFeature('Revision Reminder','পুনরাবৃত্তির জন্য নিজের পড়ার সময়সূচি তৈরি করো।')"><span class="ico">⏰</span><strong>Revision Reminder</strong><small>সময়মতো রিভিশন</small></button>
+  <button class="tile" onclick="openFeature('Parent Report','অভিভাবকের সঙ্গে শেখার অগ্রগতি শেয়ার করার রিপোর্ট।')"><span class="ico">👨‍👩‍👦</span><strong>Parent Report</strong><small>অগ্রগতির রিপোর্ট</small></button>
+ </div>
+ <section class="panel"><h3>✨ আজকের পড়ার লক্ষ্য</h3><p id="goal">আজ অন্তত ৩০ মিনিট মনোযোগ দিয়ে পড়ার চেষ্টা করো। ছোট ছোট ধাপেই বড় উন্নতি হয়!</p><div class="actions"><button class="primary" onclick="setGoal()">লক্ষ্য লিখে রাখো</button><button class="secondary" onclick="toggleLanguage()">বাংলা / English</button></div></section>
+</main>
+<footer>AI Learning Academy • A learning project</footer>
+<div id="modal" onclick="if(event.target.id==='modal')closeModal()"><div class="dialog"><h2 id="modalTitle"></h2><div id="modalBody"></div><div class="actions"><button class="primary" onclick="closeModal()">বন্ধ করো</button></div></div></div>
+<script>
+let english=false;
+function openFeature(title,desc){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML='<p>'+desc+'</p><p><b>নোট:</b> এটি প্রাথমিক ডেমো। পরের ধাপে এই ফিচারটি পুরোপুরি কার্যকর করা হবে।</p>';document.getElementById('modal').style.display='flex'}
+function openTeacher(){document.getElementById('modalTitle').textContent='Personal AI Teacher';document.getElementById('modalBody').innerHTML='<p>তোমার প্রশ্ন লিখে রাখো। এই ডেমোতে উত্তর তৈরি করতে এখনো AI সংযোগ করা হয়নি।</p><textarea id="question" rows="3" placeholder="তোমার প্রশ্ন লিখো..."></textarea><button class="primary" onclick="saveQuestion()">প্রশ্ন সংরক্ষণ</button><p id="saved"></p>';document.getElementById('modal').style.display='flex'}
+function saveQuestion(){let q=document.getElementById('question').value.trim();if(!q){document.getElementById('saved').textContent='আগে একটি প্রশ্ন লিখো।';return}localStorage.setItem('lastQuestion',q);document.getElementById('saved').textContent='প্রশ্নটি এই ডিভাইসে সংরক্ষিত হয়েছে। AI উত্তর দেওয়ার সুবিধা পরের ধাপে যুক্ত হবে।'}
+function setGoal(){let g=prompt('আজকের পড়ার লক্ষ্য কী?');if(g){localStorage.setItem('goal',g);document.getElementById('goal').textContent=g}}
+function toggleLanguage(){english=!english;document.getElementById('greeting').textContent=english?'Welcome! 👋':'স্বাগতম! 👋';document.getElementById('goal').textContent=english?'Try to study with focus for at least 30 minutes today.':'আজ অন্তত ৩০ মিনিট মনোযোগ দিয়ে পড়ার চেষ্টা করো। ছোট ছোট ধাপেই বড় উন্নতি হয়!'}
+function closeModal(){document.getElementById('modal').style.display='none'}
+if(localStorage.getItem('goal'))document.getElementById('goal').textContent=localStorage.getItem('goal');
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
